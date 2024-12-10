@@ -1,0 +1,115 @@
+//Complex number class-Complex
+
+package assign1; 
+
+import java.util.Scanner; 
+
+public class Complex 
+{
+    int real; 
+    int img;  
+    static int ch = 0; 
+
+    
+    Complex() {}
+
+    
+    Complex(int r, int i) {
+        real = r;
+        img = i;
+    }
+
+    
+    public static void main(String[] args) 
+    {
+        
+        Complex n1 = new Complex();
+        Complex n2 = new Complex();
+    
+       
+        Scanner sc = new Scanner(System.in);
+
+        
+        System.out.println("Enter first real complex number:-");
+        n1.real = sc.nextInt();
+        System.out.println("Enter first imaginary complex number:-");
+        n1.img = sc.nextInt();
+    
+        
+        System.out.println("Enter second real complex number:-");
+        n2.real = sc.nextInt();
+        System.out.println("Enter second imaginary complex number:-");
+        n2.img = sc.nextInt();
+    
+        
+        System.out.println("List of operations");
+        System.out.println("1. Add");
+        System.out.println("2. Subtract");
+        System.out.println("3. Multiply");
+        System.out.println("4. Divide");
+        System.out.println(" ");
+        System.out.println("Enter your choice:-");
+            
+        ch = sc.nextInt(); // Read the user's choice
+
+       
+        switch (ch)
+        {
+            case 1:
+                add(n1, n2); // Call the add method
+                break;
+            case 2:
+                sub(n1, n2); // Call the sub method
+                break;
+            case 3:
+                mul(n1, n2); // Call the mul method
+                break;    
+            case 4:
+                div(n1, n2); // Call the div method
+                break;
+            default:
+                System.out.println("Invalid choice"); 
+                break;
+        }
+        
+        sc.close(); // Close the scanner
+    }
+
+    
+    private static void div(Complex n1, Complex n2) {
+        Complex r = new Complex();
+        
+        r.real = n1.real / n2.real;
+        r.img = n1.img / n2.img;
+        System.out.println("(" + r.real + "+" + r.img + "i)");
+    }
+
+    
+    private static void mul(Complex n1, Complex n2) {
+        Complex r = new Complex();
+        
+        r.real = n1.real * n2.real;
+        r.img = n1.img * n2.img;
+        System.out.println("(" + r.real + "+" + r.img + "i)");
+    }
+
+    
+    private static void sub(Complex n1, Complex n2) {
+        Complex r = new Complex();
+        
+        r.real = n1.real - n2.real;
+        r.img = n1.img - n2.img;
+        System.out.println("(" + r.real + "+" + r.img + "i)");
+    }
+
+    
+    private static void add(Complex n1, Complex n2) {
+        Complex r = new Complex();
+        // Compute the real and imaginary parts of the addition
+        r.real = n1.real + n2.real;
+        r.img = n1.img + n2.img;
+        System.out.println("(" + r.real + "+" + r.img + "i)");
+    }
+}
+
+

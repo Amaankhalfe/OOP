@@ -1,0 +1,69 @@
+//package-dB1    class-Shape
+package dB1;
+import java.util.*;
+abstract class shapee {
+ 
+ double a, b;
+ 
+ Scanner s = new Scanner(System.in);
+ 
+ void input() {
+ System.out.println("Enter the value of a (length/base) and b (breadth/height):");
+ a = s.nextDouble();
+ b = s.nextDouble();
+ }
+ abstract public void printarea();
+}
+
+class rectangle extends shapee {
+ 
+ public double area_rect;
+ 
+ public void printarea() {
+ area_rect = a * b;
+ System.out.println("Length of rectangle: " + a + "\nBreadth of rectangle: " + b);
+ System.out.println("The area of the rectangle is: " + area_rect);
+ }
+}
+
+class triangle extends shapee {
+ 
+ double area_tri;
+ 
+ public void printarea() {
+ System.out.println("Base of triangle: " + a + "\nHeight of triangle: " + b);
+ area_tri = 0.5 * a * b;
+ System.out.println("The area of the triangle is: " + area_tri);
+ }
+}
+
+public class Shape {
+ public static void main(String[] args) {
+ Scanner sc = new Scanner(System.in);
+ int choice;
+ shapee s; 
+
+ do {
+ System.out.println("Enter your choice:\n1: Rectangle\n2: Triangle\n3: Exit");
+ choice = sc.nextInt();
+ switch(choice) {
+ case 1:
+ s = new rectangle(); 
+s.input(); 
+s.printarea(); 
+break;
+ case 2:
+ s = new triangle(); 
+s.input(); 
+s.printarea();
+break;
+ case 3: 
+ System.out.println("Exiting...");
+System.exit(0);
+break;
+ default:
+ System.out.println("Wrong choice. Please select a valid option.");
+ }
+ } while(choice != 3); 
+ }
+}

@@ -1,0 +1,162 @@
+
+//Interface 5 class is Veh1
+
+package interface1;
+
+import java.util.Scanner;
+
+interface Vehicle {
+    void gearChange(int a);
+    void applyBreak(int a);
+    void speedUp(int a);
+}
+
+class Bicycle implements Vehicle {
+  
+    public void gearChange(int a) {
+        System.out.println("Gear number: " + a);
+    }
+
+   
+    public void applyBreak(int a) {
+        if (a == 1) {
+            System.out.println("Brake Applied!!");
+        } else {
+            System.out.println("Brake Not Applied!!");
+        }
+    }
+
+    
+    public void speedUp(int a) {
+        System.out.println("Speed is: " + a);
+        if (a > 40) {
+            System.out.println("Warning: Overspeeding! Please reduce speed.");
+        }
+    }
+}
+
+
+class Bike implements Vehicle {
+    
+    public void gearChange(int a) {
+        System.out.println("Gear Number is: " + a);
+    }
+
+    
+    public void applyBreak(int a) {
+        if (a == 1) {
+            System.out.println("Brake Applied!!");
+        } else {
+            System.out.println("Brake Not Applied!!");
+        }
+    }
+
+    
+    public void speedUp(int a) {
+        System.out.println("Speed is: " + a);
+        if (a > 40) {
+            System.out.println("Warning: Overspeeding! Please reduce speed.");
+        }
+    }
+}
+
+
+class Car implements Vehicle {
+    
+    public void gearChange(int a) {
+        System.out.println("Gear Number is: " + a);
+    }
+
+   
+    public void applyBreak(int a) {
+        if (a == 1) {
+            System.out.println("Brake Applied!!");
+        } 
+        else 
+        {
+            System.out.println("Brake Not Applied!!");
+        }
+    }
+
+    
+    public void speedUp(int a) {
+        System.out.println("Speed is: " + a);
+        if (a > 40) {
+            System.out.println("Warning: Overspeeding! Please reduce speed.");
+        }
+    }
+}
+
+
+public class Veh1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Vehicle v;
+        int choice, gear, brake, speed;
+
+        
+        System.out.println("STATUS of Vehicle\n1.Bicycle\n2.Bike\n3.Car\n4.Exit");
+
+        
+        do {
+            System.out.println("Enter the choice:");
+            choice = sc.nextInt();
+
+           
+            if (choice >= 1 && choice <= 3) {
+                System.out.println("Enter gear number:");
+                gear = sc.nextInt();
+
+                System.out.println("Apply brake? (1 for Yes, 0 for No):");
+                brake = sc.nextInt();
+                if(brake==1)
+                {
+                    System.out.println("Vehicle Stopped!!!");
+                    System.exit(0);
+                }
+
+               
+                do {
+                    System.out.println("Enter speed (kmph):");
+                    speed = sc.nextInt();
+                    if (speed > 40) {
+                        System.out.println("Warning: Overspeeding! Please enter a speed of 40 or below.");
+                    }
+                } while (speed > 40);
+
+               
+                switch (choice) {
+                    case 1:
+                        v = new Bicycle();
+                        break;
+                    case 2:
+                        v = new Bike();
+                        break;
+                    case 3:
+                        v = new Car();
+                        break;
+                    default:
+                        v = null;
+                }
+
+                
+                if (v != null) {
+                    v.gearChange(gear);
+                    v.applyBreak(brake);
+                    v.speedUp(speed);
+                }
+            } else if (choice == 4) {
+                
+                System.out.println("Exit");
+            } else {
+                
+                System.out.println("Wrong choice");
+            }
+        } while (choice != 4); 
+
+        sc.close(); 
+    }
+}
+
+
+

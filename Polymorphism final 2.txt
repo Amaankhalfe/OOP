@@ -1,0 +1,126 @@
+//Polymorphism 2 class-BookSub
+package polymorphism;
+import java.util.*;
+class Polymorphis {
+    String title, author;
+    int price, copies;
+    static int total = 0;
+
+   
+    void showTotalSales() {
+        System.out.println("Total sale of the publication is: " + total);
+    }
+}
+
+
+class Book1 extends Polymorphis {
+    private int copies;
+
+    
+    public void getData() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Book Details:");
+        System.out.println("Enter the title of the book:");
+        title = sc.nextLine();
+        System.out.println("Enter the author name:");
+        author = sc.nextLine();
+        System.out.println("Enter the price of the book:");
+        price = sc.nextInt();
+        System.out.println("Enter the number of copies:");
+        copies = sc.nextInt();
+    }
+
+    
+    void orderCopies() {
+        System.out.println("No. of copies ordered: " + copies);
+    }
+
+   
+    @Override
+    void showTotalSales() {
+        int sale = price * copies;
+        System.out.println("Sale is: " + sale);
+        total += sale;
+    }
+}
+
+
+class Magazine extends Polymorphis {
+    private int orderQuantities;
+    private int currentIssues;
+
+ 
+    public void getData() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Magazine details:");
+        System.out.println("Enter title of the magazine:");
+        title = sc.nextLine();
+        System.out.println("Enter ordered quantities:");
+        orderQuantities = sc.nextInt();
+        System.out.println("Enter current issues:");
+        currentIssues = sc.nextInt();
+        System.out.println("Enter the price of the magazine:");
+        price = sc.nextInt();
+    }
+
+    
+    void receiveIssues() {
+        System.out.println("Current issues: " + currentIssues);
+    }
+
+    
+    @Override
+    void showTotalSales() {
+        int sale = price * orderQuantities;
+        System.out.println("Sale is: " + sale);
+        total += sale;
+    }
+}
+
+
+public class BookSub {
+    public static void main(String[] args) {
+        int ch;
+        Scanner sc = new Scanner(System.in);
+        do {
+            System.out.println("Enter the choice:");
+            System.out.println("1: Book");
+            System.out.println("2: Magazine");
+            System.out.println("3: Show Total Sales");
+            System.out.println("4: Exit");
+            ch = sc.nextInt();
+            switch (ch) {
+                case 1:
+                    Book1 b = new Book1();
+                    b.getData();
+                    b.orderCopies();
+                    b.showTotalSales();
+                    break;
+
+                case 2:
+                    Magazine m = new Magazine();
+                    m.getData();
+                    m.receiveIssues();
+                    m.showTotalSales();
+                    break;
+
+                case 3:
+                    Polymorphis p = new Polymorphis();
+                    p.showTotalSales();
+                    break;
+
+                case 4:
+                    System.out.println("Exit");
+                    break;
+
+                default:
+                    System.out.println("Wrong choice");
+                    break;
+            }
+        } while (ch != 4);
+    }
+}
+
+
+
+
